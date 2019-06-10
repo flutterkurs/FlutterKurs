@@ -11,28 +11,29 @@ class _NewTaskPageState extends State<NewTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('New Task'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            titleWidget(),
-            descriptionWidget(),
-            dateAndTimeWidget(),
-            saveButton()
-          ],
+        appBar: AppBar(
+          title: Text('New Task'),
         ),
-      ),
-    );
+        body: Container(
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(15),
+          decoration: ShapeDecoration(
+              color: Colors.indigo[100],
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20)))),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[title(), description(), dateAndtime()],
+          ),
+        ));
   }
 
-  Widget titleWidget() {
+  Widget title() {
     return TextField(
       decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           border: OutlineInputBorder(),
           icon: Icon(Icons.title),
           hintText: 'Enter title here'),
@@ -40,51 +41,19 @@ class _NewTaskPageState extends State<NewTaskPage> {
     );
   }
 
-  Widget descriptionWidget() {
+  Widget description() {
     return TextField(
       decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           border: OutlineInputBorder(),
           icon: Icon(Icons.description),
           hintText: 'Enter description here'),
-      autofocus: true,
       maxLines: null,
     );
   }
 
-  Widget dateAndTimeWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        RaisedButton(
-          padding: EdgeInsets.all(2),
-          color: Colors.deepPurpleAccent[50],
-          child: Icon(
-            Icons.date_range,
-            color: Colors.deepPurple,
-          ),
-          onPressed: () => {},
-        ),
-        Padding(padding: EdgeInsets.all(5)),
-        RaisedButton(
-          color: Colors.deepPurpleAccent[50],
-          child: Icon(
-            Icons.access_time,
-            color: Colors.deepPurple,
-          ),
-          onPressed: () => {},
-        ),
-      ],
-    );
-  }
-
-  Widget saveButton() {
-    return Align(alignment: Alignment(0, 0), child: RaisedButton(
-      color: Colors.deepPurple,
-      child: Text(
-        'Add',
-        style: TextStyle(color: Colors.deepPurple[50]),
-      ),
-      onPressed: () => {},
-    ),);
+  Widget dateAndtime() {
+    return Container();
   }
 }

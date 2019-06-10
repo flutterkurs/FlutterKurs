@@ -11,7 +11,7 @@ class TodoApp extends StatelessWidget {
       title: 'MyTodoList',
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
-          scaffoldBackgroundColor: Colors.deepPurple[50]),
+          scaffoldBackgroundColor: Colors.deepPurpleAccent[200]),
 //      home: HomePage(title: 'Todo List'),
     home: NewTaskPage(),
     );
