@@ -8,6 +8,9 @@ class NewTaskPage extends StatefulWidget {
 }
 
 class _NewTaskPageState extends State<NewTaskPage> {
+
+  String _radioValue = 'low';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +27,12 @@ class _NewTaskPageState extends State<NewTaskPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[title(), description(), dateAndtime()],
+            children: <Widget>[_title(), _description(), _priority()],
           ),
         ));
   }
 
-  Widget title() {
+  Widget _title() {
     return TextField(
       decoration: InputDecoration(
           fillColor: Colors.white,
@@ -41,7 +44,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
     );
   }
 
-  Widget description() {
+  Widget _description() {
     return TextField(
       decoration: InputDecoration(
           fillColor: Colors.white,
@@ -53,7 +56,37 @@ class _NewTaskPageState extends State<NewTaskPage> {
     );
   }
 
-  Widget dateAndtime() {
-    return Container();
+  Widget _priority() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text('Priority:', style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold)),
+        Radio<String>(
+          value: 'low',
+          groupValue: _radioValue,
+          activeColor: Colors.green[400],
+          onChanged:(s)=> _handleRadioValueChange(s),
+        ),
+        Radio<String>(
+          groupValue: _radioValue,
+          activeColor: Colors.yellow[400],
+          onChanged:(s)=> _handleRadioValueChange(s),
+          value: 'medium',
+        ),
+        Radio<String>(
+          groupValue: _radioValue,
+          activeColor: Colors.red[400],
+          onChanged:(s)=> _handleRadioValueChange(s),
+          value: 'high',
+        ),
+      ],
+    );
   }
+  void _handleRadioValueChange(String value){
+    setState(() {
+      _radioValue = value;
+    });
+
+  }
+
 }
