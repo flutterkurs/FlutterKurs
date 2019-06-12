@@ -35,7 +35,8 @@ class _NewTaskPageState extends State<NewTaskPage> {
                     emptySpaceVertical(10),
                     _description(),
                     emptySpaceVertical(10),
-                    _date(),
+                    Row(children: <Widget>[_date(),_divider(0, 0, 10),_time(),],),
+
                     emptySpaceVertical(10),
                     _priority()
                   ],
@@ -82,8 +83,8 @@ class _NewTaskPageState extends State<NewTaskPage> {
 
   Widget _circle(String text) {
     return Container(
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         decoration:
             ShapeDecoration(color: Colors.deepPurple, shape: CircleBorder()),
         alignment: Alignment.center,
@@ -103,28 +104,31 @@ class _NewTaskPageState extends State<NewTaskPage> {
   }
 
   Widget _date() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Row(children: <Widget>[
+    return Row(children: <Widget>[
         Icon(
           Icons.date_range,
           size: 25,
           color: Colors.grey[700],
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-        ),
+        _divider(0, 0, 8),
         _circle('15'),
-        _divider(1, 50, 4),
+        _divider(3, 3, 4),
         _circle('05'),
-        _divider(1, 50, 4),
+        _divider(3, 3, 4),
         _circle('1994'),
-        IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () => {},
-        ),
-      ]),
-    );
+      ]);
+  }
+  Widget _time(){
+    return Row(children: <Widget>[
+      Icon(
+        Icons.access_time,
+        size: 25,
+        color: Colors.grey[700],
+      ),
+      _divider(0, 0, 8),
+      _circle('15:45'),
+
+    ]);
   }
 
   Widget _priority() {
